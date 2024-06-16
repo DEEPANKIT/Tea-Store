@@ -15,25 +15,34 @@ class FruitTea(BubbleTea):
         "Oolong": 0.25, "Jasmine": 0.2
     }
 
+    def __init__(self, name, size, ice_level, sugar_level, tea_type, fruit_flavour, flavour=None):
+        super().__init__(name, size, ice_level, sugar_level, tea_type)
+        self.fruit_flavour = fruit_flavour
+        self.flavour = flavour
+
     def calculate_price(self):
-        base_price = 4.5  # Base price for all teas
+        base_price = self.base_price  # Base price for all teas
         price = base_price
 
         # Add tea type price
-        price += self.TEA_TYPE_PRICES[self.tea_type]
+        price += FruitTea.TEA_TYPE_PRICES[self.tea_type]
 
         # Add size price
-        price += self.SIZE_PRICES[self.size]
+        price += FruitTea.SIZE_PRICES[self.size]
 
         # Add fruit price
-        price += self.FRUIT_PRICES.get(self.fruit_flavour, 0)
+        price += FruitTea.FRUIT_PRICES.get(self.fruit_flavour, 0)
 
         # Add flavour price (if applicable)
         if self.flavour:
-            price += self.FLAVOUR_PRICES.get(self.flavour, 0)
+            price += FruitTea.FLAVOUR_PRICES.get(self.flavour, 0)
 
         # Add topping prices
         for topping in self.toppings:
             price += topping.price
 
         return round(price, 2)
+
+    def __str__(self):
+        topping_names = ", ".join([t.name for t in self.toppings])
+        return f"{self.name} ({self.size}) - Ice: {self.ice_level}, Sugar: {self.sugar_level}, Tea: {self.tea_type}, Toppings: {topping_names}, Fruit Flavour: {self.fruit_flavour}"

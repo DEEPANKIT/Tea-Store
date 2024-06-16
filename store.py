@@ -13,5 +13,3 @@ class Store:
     def display_order_history(self):
         for order in self.order_history:
             print(order)
-
-

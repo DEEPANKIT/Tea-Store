@@ -1,11 +1,6 @@
 from abc import ABC, abstractmethod
-
+from topping import Topping
 class BubbleTea(ABC):
-
-    @abstractmethod
-    def calculate_price(self):
-        pass
-
 
 class BubbleTea(ABC):
     def __init__(self, name, size, ice_level, sugar_level, tea_type):

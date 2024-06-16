@@ -1,10 +1,4 @@
 from fruit_tea import FruitTea
-from fruit_tea import FruitTea
-from bubble_tea import BubbleTea, FruitTea, Topping, Store
-
-# Your test cases...
-
-
 from topping import Topping
 
 def test_add_topping():
@@ -33,3 +27,10 @@ def test_str_method():
     topping = Topping("Pearls", 1.2)
     tea.add_topping(topping)
     assert str(tea) == "Test Tea (Small) - Ice: Normal, Sugar: Normal, Tea: Fruity, Toppings: Pearls, Fruit Flavour: Mango"
+
+if __name__ == "__main__":
+    test_add_topping()
+    test_remove_topping()
+    test_calculate_price()
+    test_str_method()
+    print("All tests passed!")
